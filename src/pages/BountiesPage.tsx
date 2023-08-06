@@ -6,7 +6,7 @@ import PageSwitch from "../sections/PageSwitch";
 
 function BountiesPage(): JSX.Element {
   return (
-    <main className="ml-40 flex w-screen flex-col items-center justify-center">
+    <main className="ml-40 flex w-screen flex-col items-center">
       <div className="relative w-3/4 space-y-4">
         <SearchBar />
         <BountiesBanner />

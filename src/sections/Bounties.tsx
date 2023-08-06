@@ -1,9 +1,10 @@
-import bounty_data from "./sample_bountes";
 import { BsArrowRight } from "react-icons/bs";
+import { useSelector } from "react-redux";
+import { getBounties } from "../app/bounties/bountySelector";
 
 export interface Bounty {
   price: number;
-  task: string;
+  description: string;
   lister: string;
   createdAt: Date;
 }
@@ -15,7 +16,7 @@ function BountyContent({ bounty }: { bounty: Bounty }): JSX.Element {
         <p>{bounty.price} TAO</p>
         <BsArrowRight className="ml-auto text-2xl text-white" />
       </header>
-      <p>{bounty.task}</p>
+      <p>{bounty.description}</p>
       <div>{bounty.lister}</div>
       <div>{bounty.createdAt.toLocaleDateString()}</div>
       <button className="w-full rounded-lg bg-indigo-950 p-1 active:scale-95">
@@ -26,9 +27,11 @@ function BountyContent({ bounty }: { bounty: Bounty }): JSX.Element {
 }
 
 function Bounties(): JSX.Element {
+  const bounties = useSelector(getBounties);
+
   return (
     <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-      {bounty_data.map((bounty, i) => (
+      {bounties.map((bounty, i) => (
         <BountyContent key={i} bounty={bounty} />
       ))}
     </section>
