@@ -1,5 +1,5 @@
 import BountiesPage from "./pages/BountiesPage";
-import SideBar from "./sections/SideBar";
+import SideBar from "./sections/Bounty/SideBar";
 
 function App(): JSX.Element {
   return (

@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addBountyToList } from "./bountyReducers";
 import { Bounty } from "../../sections/Bounty/Bounties";
+import { applyFilters } from "./filtersSelector";
 
 const bountySlice = createSlice({
-  name: "bounties",
+  name: "filters",
   initialState: [],
   reducers: {
-    addBounty(state: Bounty[], action) {
-      addBountyToList(state, action);
+    updateFilters(state: Bounty[], action) {
+      applyFilters(state, action);
     },
   },
 });
 
-export const { addBounty } = bountySlice.actions;
+export const { updateFilters } = bountySlice.actions;
 
 export default bountySlice.reducer;

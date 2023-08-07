@@ -1,6 +1,7 @@
 import { BsArrowRight } from "react-icons/bs";
-import { useSelector } from "react-redux";
-import { getBounties } from "../app/bounties/bountySelector";
+import { connect } from "react-redux";
+import { RootState } from "../../app/store";
+import { getBounties } from "../../app/bounties/bountySelector";
 
 export interface Bounty {
   price: number;
@@ -26,9 +27,7 @@ function BountyContent({ bounty }: { bounty: Bounty }): JSX.Element {
   );
 }
 
-function Bounties(): JSX.Element {
-  const bounties = useSelector(getBounties);
-
+function Bounties({ bounties }: { bounties: Bounty[] }): JSX.Element {
   return (
     <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
       {bounties.map((bounty, i) => (
@@ -38,4 +37,10 @@ function Bounties(): JSX.Element {
   );
 }
 
-export default Bounties;
+const mapStateToProps = (state: RootState) => {
+  return {
+    bounties: getBounties(state),
+  };
+};
+
+export default connect(mapStateToProps, null)(Bounties);

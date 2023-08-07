@@ -1,8 +1,8 @@
-import Filters from "../sections/Filters";
-import Bounties from "../sections/Bounties";
-import SearchBar from "../sections/SearchBar";
-import BountiesBanner from "../sections/BountiesBanner";
-import PageSwitch from "../sections/PageSwitch";
+import Filters from "../sections/Bounty/Filters";
+import Bounties from "../sections/Bounty/Bounties";
+import SearchBar from "../sections/Bounty/SearchBar";
+import BountiesBanner from "../sections/Bounty/BountiesBanner";
+import PageSwitch from "../sections/Bounty/PageSwitch";
 
 function BountiesPage(): JSX.Element {
   return (

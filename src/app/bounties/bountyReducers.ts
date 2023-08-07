@@ -1,4 +1,4 @@
-import { Bounty } from "../../sections/Bounties";
+import { Bounty } from "../../sections/Bounty/Bounties";
 
 export function addBountyToList(
   state: Bounty[],

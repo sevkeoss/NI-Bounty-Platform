@@ -1,16 +1,19 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addBounty } from "../app/bounties/bountySlice";
+import { connect } from "react-redux";
+import { addBounty } from "../../app/bounties/bountySlice";
 
-function BountiesBanner(): JSX.Element {
+function BountiesBanner({
+  addBountyToList,
+}: {
+  addBountyToList: Function;
+}): JSX.Element {
   const [isListBountyOpen, setIsListBountyOpen] = useState(false);
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
 
   const toggleModal = () => setIsListBountyOpen(!isListBountyOpen);
-  const dispatch = useDispatch();
   const dispatchBounty = () => {
-    dispatch(addBounty({ description, price }));
+    addBountyToList(description, price);
     toggleModal();
   };
 
@@ -43,6 +46,7 @@ function BountiesBanner(): JSX.Element {
                 type="text"
                 className="peer h-8 border-b-[1px] border-b-white bg-transparent text-white placeholder-transparent outline-none focus:border-b-purple-300"
                 placeholder="Description"
+                required
                 onChange={(e) => setDescription(e.target.value)}
               />
               <label className="pointer-events-none absolute -top-4 left-0 text-sm text-white transition-all peer-placeholder-shown:top-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-4 peer-focus:text-sm peer-focus:text-white">
@@ -54,6 +58,8 @@ function BountiesBanner(): JSX.Element {
                 type="number"
                 className="peer h-8 border-b-[1px] border-b-white bg-transparent text-white placeholder-transparent outline-none focus:border-b-purple-300"
                 placeholder="Description"
+                required
+                min="1"
                 onChange={(e) => setPrice(Number(e.target.value))}
               />
               <label className="pointer-events-none absolute -top-4 left-0 text-sm text-white transition-all peer-placeholder-shown:top-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-4 peer-focus:text-sm peer-focus:text-white">
@@ -82,4 +88,11 @@ function BountiesBanner(): JSX.Element {
   );
 }
 
-export default BountiesBanner;
+const mapDispatchToProps = (dispatch: Function) => {
+  return {
+    addBountyToList: (description: string, price: number) =>
+      dispatch(addBounty({ description, price })),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(BountiesBanner);
