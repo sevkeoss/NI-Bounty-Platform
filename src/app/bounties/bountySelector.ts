@@ -1,5 +1,6 @@
-import { Bounty } from "../../sections/Bounty/Bounties";
+import { Bounty } from "./types";
+import { BountiesState } from "./bountySlice";
 
-export function getBounties(state: { bounties: Bounty[] }): Bounty[] {
-  return state.bounties;
+export function getBounties(state: { bounties: BountiesState }): Bounty[] {
+  return state.bounties.bountiesList;
 }

@@ -1,19 +1,27 @@
 import { useState } from "react";
-import { connect } from "react-redux";
-import { addBounty } from "../../app/bounties/bountySlice";
+import { useAppDispatch } from "../../app/hooks";
+import { useCreateBountyMutation } from "../../services/bountiesQuery";
+import { CreateBounty } from "../../services/types";
 
-function BountiesBanner({
-  addBountyToList,
-}: {
-  addBountyToList: Function;
-}): JSX.Element {
+function BountiesBanner(): JSX.Element {
   const [isListBountyOpen, setIsListBountyOpen] = useState(false);
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
 
   const toggleModal = () => setIsListBountyOpen(!isListBountyOpen);
-  const dispatchBounty = () => {
-    addBountyToList(description, price);
+
+  const [postBounty] = useCreateBountyMutation();
+  const createBounty = async () => {
+    try {
+      const newBounty: CreateBounty = {
+        description,
+        price,
+      };
+      await postBounty(newBounty);
+    } catch (err) {
+      console.log(err);
+    }
+
     toggleModal();
   };
 
@@ -77,7 +85,7 @@ function BountiesBanner({
             </button>
             <button
               className="rounded bg-green-400 px-4 py-2 font-bold text-white hover:bg-green-700"
-              onClick={dispatchBounty}
+              onClick={createBounty}
             >
               Create
             </button>
@@ -88,11 +96,4 @@ function BountiesBanner({
   );
 }
 
-const mapDispatchToProps = (dispatch: Function) => {
-  return {
-    addBountyToList: (description: string, price: number) =>
-      dispatch(addBounty({ description, price })),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(BountiesBanner);
+export default BountiesBanner;

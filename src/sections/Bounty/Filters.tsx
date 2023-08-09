@@ -9,7 +9,7 @@ function Filters(): JSX.Element {
           <select
             name="price_range"
             className="rounded-lg border-2 border-white bg-indigo-950 p-2 text-white"
-            defaultValue={"Price Range"}
+            defaultValue="Price Range"
           >
             <option value="Price Range" disabled>
               Price Range
@@ -22,32 +22,28 @@ function Filters(): JSX.Element {
           <select
             name="price_range"
             className="rounded-lg border-2 border-white bg-indigo-950 p-2 text-white"
-            defaultValue={"Price Range"}
+            defaultValue="Type of work"
           >
-            <option value="Price Range" disabled>
+            <option value="Type of work" disabled>
               Price Range
             </option>
-            <option>1-10</option>
-            <option>10-25</option>
-            <option>25-100</option>
-            <option>100+</option>
+            <option>Coding</option>
+            <option>Testing</option>
+            <option>Writing</option>
           </select>
           <select
             name="price_range"
             className="rounded-lg border-2 border-white bg-indigo-950 p-2 text-white"
-            defaultValue={"Price Range"}
+            defaultValue="Price high to low"
           >
-            <option value="Price Range" disabled>
-              Price Range
-            </option>
-            <option>1-10</option>
-            <option>10-25</option>
-            <option>25-100</option>
-            <option>100+</option>
+            <option value="Price high to low">Price high to low</option>
+            <option>Price low to high</option>
+            <option>Most recent</option>
+            <option>Least recent</option>
           </select>
         </>
 
-        <button className="ml-auto inline-flex items-center rounded-xl space-x-2 bg-white p-2 text-left active:scale-95">
+        <button className="ml-auto inline-flex items-center space-x-2 rounded-xl bg-white p-2 text-left active:scale-95">
           <p>Clear All</p>
           <SlClose />
         </button>
