@@ -1,8 +1,20 @@
 import { SiGithub, SiDiscord, SiTwitter } from "react-icons/si";
 
-function SideBar(): JSX.Element {
+function SideBarButton({ text }: { text: string }): JSX.Element {
   return (
-    <section className="fixed left-0 top-0 flex h-full w-40 shrink flex-col items-center bg-gradient-to-b from-indigo-900 via-indigo-800 to-indigo-950">
+    <li>
+      <button className="rounded-xl p-2 font-semibold text-ni duration-300 hover:bg-slate-300 focus:outline focus:outline-2 focus:outline-white">
+        {text}
+      </button>
+    </li>
+  );
+}
+
+function SideBar(): JSX.Element {
+  const navs: string[] = ["Bounties", "Services"];
+
+  return (
+    <section className="fixed left-0 top-0 flex h-full w-40 shrink flex-col items-center bg-gray-300">
       <div className="mt-4 flex flex-col items-center">
         <img
           src="/ni-logo.webp"
@@ -12,23 +24,16 @@ function SideBar(): JSX.Element {
           height="200"
         />
         <ul className="mt-8 space-y-2 text-center">
-          <li>
-            <button className="rounded-xl p-2 text-white focus:outline focus:outline-2 focus:outline-white">
-              Bounties
-            </button>
-          </li>
-          <li>
-            <button className="rounded-xl p-2 text-white focus:outline focus:outline-2 focus:outline-white">
-              Services
-            </button>
-          </li>
+          {navs.map((nav: string, i: number) => (
+            <SideBarButton key={i} text={nav} />
+          ))}
         </ul>
       </div>
       <div className="mb-4 mt-auto flex flex-col items-center gap-y-4">
-        <SiGithub className="rounded-full text-3xl text-white" />
-        <SiDiscord className="rounded-full text-3xl text-white" />
-        <SiTwitter className="rounded-full text-3xl text-white" />
-        <button className="text-white">Documentation</button>
+        <SiGithub className="rounded-full text-3xl text-ni" />
+        <SiDiscord className="rounded-full text-3xl text-ni" />
+        <SiTwitter className="rounded-full text-3xl text-ni" />
+        <button className="text-ni">Documentation</button>
       </div>
     </section>
   );

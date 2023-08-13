@@ -7,15 +7,15 @@ import { getBounties } from "../../app/bounties/bountySelector";
 
 function BountyContent({ bounty }: { bounty: Bounty }): JSX.Element {
   return (
-    <div className="flex scale-95 flex-col gap-y-4 rounded-xl bg-indigo-800 p-4 text-white hover:scale-100">
+    <div className="flex scale-95 flex-col gap-y-4 rounded-xl bg-gray-300 p-4 text-black hover:scale-100">
       <header className="flex flex-row items-center">
         <p>{bounty.price} TAO</p>
-        <BsArrowRight className="ml-auto text-2xl text-white" />
+        <BsArrowRight className="ml-auto text-2xl text-black" />
       </header>
       <p>{bounty.description}</p>
       <div>{bounty.lister}</div>
       <div>{bounty.createdAt}</div>
-      <button className="w-full rounded-lg bg-indigo-950 p-1 active:scale-95">
+      <button className="w-full rounded-lg bg-ni p-1 active:scale-95">
         Apply
       </button>
     </div>

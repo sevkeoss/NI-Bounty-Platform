@@ -3,7 +3,7 @@ import SideBar from "./sections/Bounty/SideBar";
 
 function App(): JSX.Element {
   return (
-    <div className="flex min-h-screen bg-indigo-950 ">
+    <div className="flex min-h-screen">
       <SideBar />
       <BountiesPage />
     </div>

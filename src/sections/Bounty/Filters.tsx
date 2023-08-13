@@ -3,12 +3,12 @@ import { SlClose } from "react-icons/sl";
 function Filters(): JSX.Element {
   return (
     <section>
-      <h3 className="text-2xl text-white">Filters</h3>
+      <h3 className="text-2xl ">Filters</h3>
       <div className="grid w-full grid-cols-4 gap-x-4">
         <>
           <select
             name="price_range"
-            className="rounded-lg border-2 border-white bg-indigo-950 p-2 text-white"
+            className="rounded-lg border-2 border-white bg-ni p-2 text-white"
             defaultValue="Price Range"
           >
             <option value="Price Range" disabled>
@@ -21,7 +21,7 @@ function Filters(): JSX.Element {
           </select>
           <select
             name="price_range"
-            className="rounded-lg border-2 border-white bg-indigo-950 p-2 text-white"
+            className="rounded-lg border-2 border-white bg-ni p-2 text-white"
             defaultValue="Type of work"
           >
             <option value="Type of work" disabled>
@@ -33,7 +33,7 @@ function Filters(): JSX.Element {
           </select>
           <select
             name="price_range"
-            className="rounded-lg border-2 border-white bg-indigo-950 p-2 text-white"
+            className="rounded-lg border-2 border-white bg-ni p-2 text-white"
             defaultValue="Price high to low"
           >
             <option value="Price high to low">Price high to low</option>
@@ -43,7 +43,7 @@ function Filters(): JSX.Element {
           </select>
         </>
 
-        <button className="ml-auto inline-flex items-center space-x-2 rounded-xl bg-white p-2 text-left active:scale-95">
+        <button className="ml-auto inline-flex items-center space-x-2 rounded-xl bg-ni p-2 text-left text-white active:scale-95">
           <p>Clear All</p>
           <SlClose />
         </button>
