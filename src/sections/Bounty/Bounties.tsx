@@ -1,9 +1,7 @@
 import { BsArrowRight } from "react-icons/bs";
 
-import { Bounty } from "../../app/bounties/types";
+import { Bounty } from "../../services/bountiesQuery";
 import { useGetBountiesQuery } from "../../services/bountiesQuery";
-import { useAppSelector } from "../../app/hooks";
-import { getBounties } from "../../app/bounties/bountySelector";
 
 function BountyContent({ bounty }: { bounty: Bounty }): JSX.Element {
   return (
@@ -23,8 +21,8 @@ function BountyContent({ bounty }: { bounty: Bounty }): JSX.Element {
 }
 
 function Bounties(): JSX.Element {
-  useGetBountiesQuery();
-  const bounties = useAppSelector(getBounties);
+  const { data: bounties } = useGetBountiesQuery();
+  if (!bounties) return <></>;
 
   return (
     <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">

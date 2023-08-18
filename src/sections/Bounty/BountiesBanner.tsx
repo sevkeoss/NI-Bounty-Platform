@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useAppDispatch } from "../../app/hooks";
 import { useCreateBountyMutation } from "../../services/bountiesQuery";
-import { CreateBounty } from "../../services/types";
+import { CreateBounty } from "../../services/bountiesQuery";
 
 function BountiesBanner(): JSX.Element {
   const [isListBountyOpen, setIsListBountyOpen] = useState(false);
@@ -13,11 +12,13 @@ function BountiesBanner(): JSX.Element {
   const [postBounty] = useCreateBountyMutation();
   const createBounty = async () => {
     try {
-      const newBounty: CreateBounty = {
+      const newBounty: Required<CreateBounty> = {
         description,
         price,
       };
-      await postBounty(newBounty);
+      await postBounty(newBounty).unwrap();
+      setDescription("");
+      setPrice(0);
     } catch (err) {
       console.log(err);
     }
@@ -47,7 +48,7 @@ function BountiesBanner(): JSX.Element {
       )}
       {isListBountyOpen && (
         <div className="absolute left-1/2 z-10 flex h-96 w-72 -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center gap-y-4 rounded-lg bg-slate-300 shadow-xl">
-          <p className="absolute right-5 top-5 ">x</p>
+          <p className="absolute right-5 top-5 ">&times;</p>
           <h3 className="text-2xl text-black">Create Bounty</h3>
           <div className="flex flex-col items-center gap-y-6">
             <div className="relative">
